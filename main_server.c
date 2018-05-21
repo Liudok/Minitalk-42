@@ -36,7 +36,6 @@ void		activebit(int sig, siginfo_t *info, void *context)
 		g_to_print.top_bit = 1 << 6;
 		++(g_to_print.top_byte);
 	}
-	write(1, "1", 1);
 	g_to_print.message[g_to_print.top_byte] += g_to_print.top_bit;
 	g_to_print.top_bit >>= 1;
 	if (g_to_print.top_byte == BUFFSIZE - 2 && !g_to_print.top_bit)
@@ -52,7 +51,6 @@ void		nullbit(int sig, siginfo_t *info, void *context)
 		g_to_print.top_bit = 1 << 6;
 		++(g_to_print.top_byte);
 	}
-	write(1, "0", 1);
 	g_to_print.top_bit >>= 1;
 	if (g_to_print.top_byte == BUFFSIZE - 2 && !g_to_print.top_bit)
 		g_to_print.buff_overflow = TRUE;
